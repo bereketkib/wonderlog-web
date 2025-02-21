@@ -1,101 +1,219 @@
-import Image from "next/image";
+"use client";
+
+import { useAuth } from "@/context/AuthContext";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const { user } = useAuth();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="relative space-y-32 py-16">
+      {/* Background Elements */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-1/3 -left-64 w-96 h-96 bg-purple-200 dark:bg-purple-900/20 rounded-full blur-3xl opacity-50" />
+        <div className="absolute top-2/3 -right-64 w-96 h-96 bg-pink-200 dark:bg-pink-900/20 rounded-full blur-3xl opacity-50" />
+      </div>
+
+      {/* Hero Section */}
+      <section className="relative max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="space-y-8 text-center lg:text-left">
+          <div className="inline-block p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+            <span className="text-purple-600 dark:text-purple-400 font-medium">
+              Welcome to the future of blogging
+            </span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+            <span className="text-gray-900 dark:text-white">
+              Share Your Story on{" "}
+            </span>
+            <span className="bg-clip-text text-transparent tracking-wide bg-gradient-to-r from-purple-600 to-pink-600">
+              Wonderlog
+            </span>
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto lg:mx-0">
+            A modern platform for writers and readers to share ideas, stories,
+            and knowledge in a beautiful, engaging way.
+          </p>
+          {/* Hero Section Buttons */}
+          <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+            {user ? (
+              <>
+                <a
+                  href="/posts"
+                  className="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium hover:from-purple-700 hover:to-pink-700 transition-all transform hover:-translate-y-0.5"
+                >
+                  Explore Blogs
+                </a>
+                <a
+                  href="/profile"
+                  className="px-8 py-4 rounded-xl border-2 border-purple-600 text-purple-600 dark:text-purple-400 hover:bg-purple-600 hover:text-white font-medium transition-all transform hover:-translate-y-0.5"
+                >
+                  View Profile
+                </a>
+              </>
+            ) : (
+              <>
+                <a
+                  href="/register"
+                  className="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium hover:from-purple-700 hover:to-pink-700 transition-all transform hover:-translate-y-0.5"
+                >
+                  Start Writing
+                </a>
+                <a
+                  href="/posts"
+                  className="px-8 py-4 rounded-xl border-2 border-purple-600 text-purple-600 dark:text-purple-400 hover:bg-purple-600 hover:text-white font-medium transition-all transform hover:-translate-y-0.5"
+                >
+                  Explore Posts
+                </a>
+              </>
+            )}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+        <div className="relative group">
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity" />
+          <img
+            src="/images/home/hero.svg"
+            alt="Hero"
+            className="relative w-full dark:opacity-90 transform group-hover:scale-[1.02] transition-transform duration-500"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="relative max-w-7xl mx-auto px-4">
+        <div className="text-center space-y-4 mb-16">
+          <h2 className="text-3xl font-bold">Why Choose Wonderlog?</h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Experience the perfect blend of powerful features and elegant design
+          </p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              icon: "✍️",
+              title: "Easy Writing",
+              description:
+                "Intuitive editor with markdown support and real-time preview",
+            },
+            {
+              icon: "🎨",
+              title: "Beautiful Design",
+              description:
+                "Modern, responsive design that looks great on any device",
+            },
+            {
+              icon: "💬",
+              title: "Engage & Connect",
+              description:
+                "Build meaningful connections through comments and discussions",
+            },
+          ].map((feature, i) => (
+            <div
+              key={i}
+              className="group p-8 rounded-2xl bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl transition-all"
+            >
+              <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-purple-100 dark:bg-purple-900/30 mb-6 group-hover:scale-110 transition-transform">
+                <span className="text-3xl">{feature.icon}</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Reading Experience Section */}
+      <section className="relative max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="space-y-6 order-2 lg:order-1">
+          <h2 className="text-3xl font-bold">Immersive Reading Experience</h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400">
+            Dive into a world of captivating stories and insightful articles.
+            Our clean, distraction-free reading environment helps you focus on
+            what matters most - the content.
+          </p>
+          <ul className="space-y-4">
+            {[
+              "Customizable reading preferences",
+              "Bookmark your favorite articles",
+              "Estimated reading times",
+              "Dark mode support",
+            ].map((item, i) => (
+              <li key={i} className="flex items-center gap-3">
+                <span className="w-6 h-6 flex items-center justify-center rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400">
+                  ✓
+                </span>
+                <span className="text-gray-600 dark:text-gray-400">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="relative group order-1 lg:order-2">
+          <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity" />
+          <img
+            src="/images/home/reading.svg"
+            alt="Reading Experience"
+            className="relative w-full dark:opacity-90 transform group-hover:scale-[1.02] transition-transform duration-500"
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </div>
+      </section>
+
+      {/* Community Section */}
+      <section className="relative max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+        <img
+          src="/images/home/community.svg"
+          alt="Community"
+          className="w-full dark:opacity-90"
+        />
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold">Join Our Community</h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400">
+            Connect with like-minded writers and readers. Share your
+            perspectives, get feedback, and grow together in a supportive
+            environment.
+          </p>
+          <ul className="space-y-4">
+            {[
+              "Engage in meaningful discussions",
+              "Get inspired by diverse content",
+              "Build your writing portfolio",
+              "Reach a wider audience",
+            ].map((item, i) => (
+              <li key={i} className="flex items-center gap-3">
+                <span className="w-6 h-6 flex items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+                  ✓
+                </span>
+                <span className="text-gray-600 dark:text-gray-400">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative max-w-5xl mx-auto px-4">
+        <div className="relative p-12 rounded-3xl bg-gradient-to-r from-purple-600 to-pink-600 overflow-hidden">
+          <div className="absolute inset-0 bg-grid-white/10" />
+          <div className="relative text-center space-y-8">
+            <h2 className="text-3xl font-bold text-white">
+              {user
+                ? "Ready to Share Your Story?"
+                : "Ready to Start Your Journey?"}
+            </h2>
+            <p className="text-xl text-purple-100 max-w-2xl mx-auto">
+              {user
+                ? "Share your thoughts and experiences with our growing community."
+                : "Join thousands of writers and readers who are already part of our growing community."}
+            </p>
+            <a
+              href={user ? "/profile" : "/register"}
+              className="inline-block px-8 py-4 rounded-xl bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-300 font-medium hover:bg-purple-50 transition-colors transform hover:-translate-y-0.5"
+            >
+              {user ? "Write a blog" : "Get Started Today"}
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

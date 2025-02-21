@@ -1,36 +1,151 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wonderlog Web
+
+A modern blogging platform built with Next.js, where readers can discover thought-provoking articles and engage with writers.
+
+## Related Repositories
+
+- [Wonderlog API](https://github.com/bereketkib/wonderlog-api) - Backend API
+- [Wonderlog Dashboard](https://github.com/bereketkib/wonderlog-dashboard) - Author's dashboard
+
+## Features
+
+- **Modern Authentication**
+
+  - JWT-based authentication
+  - Secure password handling
+  - Protected routes
+  - User role management
+
+- **Rich Content Experience**
+
+  - Rich text editor for comments
+  - Markdown support
+  - Image optimization
+  - Dark mode support
+
+- **Interactive UI**
+
+  - Real-time content updates
+  - Responsive design
+  - Animated transitions
+  - Search and filter functionality
+
+- **User Features**
+  - User profiles
+  - Comment management
+  - Post interactions
+  - Account settings
+
+## Tech Stack
+
+- **Framework:** Next.js 14
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **State Management:** React Context
+- **Authentication:** JWT
+- **Editor:** TipTap
+- **HTTP Client:** Axios
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
+
+```bash
+git clone https://github.com/bereketkib/wonderlog-web.git
+cd wonderlog-web
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Set up environment variables
+
+```bash
+cp .env.example .env.local
+```
+
+Required environment variables:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3000
+```
+
+4. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```plaintext
+src/
+├── app/                 # Next.js app router pages
+├── components/         # Reusable React components
+│   ├── ui/            # Base UI components
+│   ├── post/          # Post-related components
+│   └── profile/       # Profile-related components
+├── context/           # React context providers
+├── services/          # API service layers
+└── styles/           # Global styles
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Key Features
 
-## Learn More
+### Authentication
 
-To learn more about Next.js, take a look at the following resources:
+- Secure login and registration
+- Password validation
+- Protected routes
+- Role-based access
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Posts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- View published posts
+- Search and filter posts
+- Comment on posts
+- Rich text editing
 
-## Deploy on Vercel
+### User Profile
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- View and edit profile
+- Manage comments
+- Account settings
+- Dark mode preferences
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch ( git checkout -b feature/amazing-feature )
+3. Commit your changes ( git commit -m 'Add amazing feature' )
+4. Push to the branch ( git push origin feature/amazing-feature )
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Author
+
+Bereket Kibreab
+
+## Acknowledgments
+
+- Next.js team
+- TailwindCSS team
+- TipTap team
+
+```plaintext
+
+This README:
+- Reflects the actual features implemented in the code
+- Matches the styling of your existing API README
+- Includes accurate tech stack information
+- Provides clear setup instructions
+- Maintains consistency with your branding
+- Details the project structure
+- Lists all major features
+```
