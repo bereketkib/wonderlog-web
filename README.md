@@ -70,7 +70,8 @@ cp .env.example .env.local
 Required environment variables:
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL="your_api_url"
+NEXT_PUBLIC_DASHBOARD_URL="your_dashboard_url"
 ```
 
 4. Start the development server
