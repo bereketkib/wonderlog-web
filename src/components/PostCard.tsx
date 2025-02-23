@@ -18,7 +18,7 @@ export default function PostCard({ post }: PostCardProps) {
           </h2>
 
           <div
-            className="text-gray-600 dark:text-gray-400 prose prose-sm dark:prose-invert max-w-none line-clamp-6 mb-auto"
+            className="text-gray-600 dark:text-gray-400 prose prose-sm dark:prose-invert max-w-none overflow-hidden flex-1"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
