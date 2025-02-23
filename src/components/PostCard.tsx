@@ -13,7 +13,7 @@ export default function PostCard({ post }: PostCardProps) {
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-600/0 to-pink-600/0 group-hover:from-purple-600/[0.03] group-hover:to-pink-600/[0.03] transition-colors" />
 
         <div className="relative flex flex-col h-full">
-          <h2 className="text-2xl font-bold mb-4 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors line-clamp-2">
+          <h2 className="text-2xl font-bold mb-4 text-purple-800 dark:text-purple-200 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors line-clamp-2">
             {post.title}
           </h2>
           <hr className="border-b-2 border-black/70 dark:border-white/70 mb-2" />
