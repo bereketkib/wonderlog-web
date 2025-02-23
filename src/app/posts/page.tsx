@@ -19,29 +19,22 @@ export default function Posts() {
   const search = searchParams.get("search") || "";
   const sort = searchParams.get("sort") || "recent";
 
-  useEffect(() => {
-    async function fetchPosts() {
-      try {
-        const data = await postsService.getPosts(page, search, sort);
-        setPosts(data.posts);
-      } catch (err) {
-        setError("Failed to load posts");
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchPosts();
-  }, [page, search, sort]);
+  // Add pagination state
+  const [pagination, setPagination] = useState({
+    total: 0,
+    pages: 0,
+    currentPage: 1,
+    hasMore: false,
+  });
 
   const selectStyles = {
     control: (base: any) => ({
       ...base,
       backgroundColor: "transparent",
       borderColor: "rgb(229 231 235)",
-      borderRadius: "0.75rem", // rounded-xl
+      borderRadius: "0.75rem",
       padding: "0.5rem",
-      minHeight: "56px", // to match your input height
+      minHeight: "56px",
       "&:hover": {
         borderColor: "rgb(156 163 175)",
       },
@@ -103,6 +96,24 @@ export default function Posts() {
     }),
   };
 
+  // Update the useEffect to include pagination data
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const data = await postsService.getPosts(page, search, sort);
+        setPosts(data.posts);
+        setPagination(data.pagination);
+      } catch (err) {
+        setError("Failed to load posts");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPosts();
+  }, [page, search, sort]);
+
+  // Add this pagination controls component before the closing section tag
   return (
     <div className="relative min-h-screen space-y-12 py-16">
       {/* Background Elements */}
