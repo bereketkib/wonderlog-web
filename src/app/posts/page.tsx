@@ -242,6 +242,35 @@ export default function Posts() {
             ))}
           </div>
         )}
+        {!loading && posts.length > 0 && (
+          <div className="mt-12 flex justify-center gap-2">
+            <button
+              onClick={() => {
+                const newParams = new URLSearchParams(searchParams.toString());
+                newParams.set("page", String(Math.max(1, page - 1)));
+                router.push(`/posts?${newParams.toString()}`);
+              }}
+              disabled={page <= 1}
+              className="px-4 py-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:border-purple-500 dark:hover:border-purple-400 transition-all"
+            >
+              Previous
+            </button>
+            <span className="px-4 py-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+              Page {pagination.currentPage} of {pagination.pages}
+            </span>
+            <button
+              onClick={() => {
+                const newParams = new URLSearchParams(searchParams.toString());
+                newParams.set("page", String(page + 1));
+                router.push(`/posts?${newParams.toString()}`);
+              }}
+              disabled={!pagination.hasMore}
+              className="px-4 py-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:border-purple-500 dark:hover:border-purple-400 transition-all"
+            >
+              Next
+            </button>
+          </div>
+        )}
       </section>
     </div>
   );
