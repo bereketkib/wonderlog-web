@@ -253,7 +253,7 @@ export default function Posts() {
               disabled={page <= 1}
               className="px-4 py-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:border-purple-500 dark:hover:border-purple-400 transition-all"
             >
-              Previous
+              ⥢ Previous
             </button>
             <span className="px-4 py-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
               Page {pagination.currentPage} of {pagination.pages}
@@ -267,7 +267,7 @@ export default function Posts() {
               disabled={!pagination.hasMore}
               className="px-4 py-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:border-purple-500 dark:hover:border-purple-400 transition-all"
             >
-              Next
+              Next ⥤
             </button>
           </div>
         )}
