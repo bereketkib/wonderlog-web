@@ -16,7 +16,7 @@ export default function PostCard({ post }: PostCardProps) {
           <h2 className="text-2xl font-bold mb-4 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors line-clamp-2">
             {post.title}
           </h2>
-
+          <hr className="border-b-2 border-black/70 dark:border-white/70" />
           <div
             className="text-gray-600 dark:text-gray-400 prose prose-sm dark:prose-invert max-w-none overflow-hidden flex-1"
             dangerouslySetInnerHTML={{ __html: post.content }}
